@@ -1,27 +1,55 @@
-import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import { Box, Grid, Typography } from "@mui/material";
+// import { NextScript, Main } from "next/document";
+// import Layout from "./layout";
+// import { Box } from "@mui/material";
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>TITLE</title>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+          rel="stylesheet"
+        />
       </Head>
 
-      <main>
-      </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      <body>
+        <Box
+          sx={{
+            width: "100vw",
+            height: "100vh",
+            bgcolor: "#0A192F",
+            color: "white",
+          }}
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
-        </a>
-      </footer>
+          <Grid container>
+            <Grid item xs={12}>
+              <Box
+                sx={{
+                  width: "100%",
+                  height: 600,
+                  border: "1px solid red",
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Box component={"img"} src="" sx={{}}></Box>
+                <Box>
+                  <Typography></Typography>
+                </Box>
+              </Box>
+            </Grid>
+            <Grid item xs={6}></Grid>
+            <Grid item xs={6}></Grid>
+          </Grid>
+        </Box>
+      </body>
 
       <style jsx>{`
         main {
@@ -74,5 +102,5 @@ export default function Home() {
         }
       `}</style>
     </div>
-  )
+  );
 }
