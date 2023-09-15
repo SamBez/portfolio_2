@@ -1,11 +1,54 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Chip, Grid, Tab, Tabs, Typography } from "@mui/material";
+import React from "react";
+import FaceIcon from '@mui/icons-material/Face';
+
 // import { NextScript, Main } from "next/document";
 // import Layout from "./layout";
 // import { Box } from "@mui/material";
 
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
+
+
 export default function Home() {
+
+  function CustomTabPanel(props: TabPanelProps) {
+    const { children, value, index, ...other } = props;
+  
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <Box sx={{ p: 3 }}>
+            <Typography>{children}</Typography>
+          </Box>
+        )}
+      </div>
+    );
+  }
+  
+  function a11yProps(index: number) {
+    return {
+      id: `simple-tab-${index}`,
+      'aria-controls': `simple-tabpanel-${index}`,
+    };
+  }
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -19,41 +62,149 @@ export default function Home() {
         />
       </Head>
 
-      <body>
+      <main id="main-body">
         <Box
+        
           sx={{
             width: "100vw",
             height: "100vh",
             bgcolor: "#0A192F",
             color: "white",
+            scrollbarColor: 'auto',
+            overflowX: 'hidden',
+            overflow: 'scroll'
+            // border: "10px solid yellow",
           }}
-        >
+          component={'div'}
+          onMouseMove={(event) => {
+            const xclient = event.clientX
+            const yclient = event.clientY
+
+         const space = document.getElementById('main-body')
+         const areaRect = space.getBoundingClientRect();
+         const isInArea = xclient >= areaRect.left && xclient <= areaRect.right && yclient >= areaRect.top && yclient <= areaRect.bottom;
+       console.log({isInArea, xclient, yclient})
+         if (isInArea) {
+           space.style.backgroundColor = '#112044'
+         }
+
+          }}
+          onMouseLeave={(event) => {
+
+         const space = document.getElementById('main-body')
+         space.style.backgroundColor = 'initial'
+
+          }}
+          >
           <Grid container>
             <Grid item xs={12}>
               <Box
                 sx={{
                   width: "100%",
-                  height: 600,
-                  border: "1px solid red",
+                  // height: 600,
                   display: "flex",
                   justifyContent: "space-between",
+                 backgroundColor:  'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(15,14,51,1) 28%, rgba(18,18,55,1) 35%, rgba(16,45,83,1) 44%, rgba(10,111,150,1) 100%, rgba(15,54,92,1) 100%, rgba(11,99,138,1) 100%, rgba(12,87,126,1) 100%, rgba(10,111,150,1) 100%, rgba(49,96,130,1) 100%)'
                 }}
               >
-                <Box component={"img"} src="" sx={{}}></Box>
-                <Box>
-                  <Typography></Typography>
+                <Box 
+                width={'40%'}sx={{
+                  padding: 10,
+
+                }}>
+                <Box component={"img"} width={'100%'} src="sample.jpg" alt="image" sx={{
+                  borderRadius: '50%',
+                  height: 600
+
+                }}/>
+
+                </Box>
+                <Box sx={{
+                  paddingTop: 10,
+                  width: '50%'
+                }}>
+                  <Typography variant="h1">I'm Samrawit Bezabih</Typography>
+                  <Typography variant="h4">Full-Stack Web Developer. Programming euthisiastic</Typography>
+
                 </Box>
               </Box>
             </Grid>
-            <Grid item xs={6}></Grid>
-            <Grid item xs={6}></Grid>
+            <Grid item xs={12}>
+
+     <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center'  }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider', color: 'white' }}>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" sx={{
+          fontSize: '30px'
+        }} textColor="inherit">
+          <Tab label="Experience"  {...a11yProps(0)} />
+          <Tab label="Skills" {...a11yProps(1)} />
+          <Tab label="Education" {...a11yProps(2)} />
+          <Tab label="About" {...a11yProps(3)} />
+
+        </Tabs>
+      </Box>
+
+    </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <Box sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                padding: '30px',
+                marginX: '30px'
+                ,border: '1px solid red'
+              }}>
+                <Typography variant="h4"> Skill Sets</Typography>
+                <Box paddingY={5} sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: 5
+                }}>
+   <Chip icon={<FaceIcon />} label="With Icon" />
+      <Chip icon={<FaceIcon />} label="With Icon" variant="outlined" />
+      <Chip icon={<FaceIcon />} label="With Icon" variant="outlined" />
+
+                </Box>
+              </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <Box sx={{
+                display: 'flex',
+                // justifyContent: 'center',
+                padding: '30px',
+                marginX: '30px'
+              }}>
+                <Typography variant="h4"> Experiences</Typography>
+                <Box paddingY={5}>
+                <Typography variant="h4"> Skill Sets</Typography>
+                <Typography variant="h4"> Skill Sets</Typography>
+                <Typography variant="h4"> Skill Sets</Typography>
+
+                </Box>
+              </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <Box sx={{
+                display: 'flex',
+                // justifyContent: 'center',
+                padding: '30px',
+                marginX: '30px'
+              }}>
+                <Typography variant="h4"> Education</Typography>
+                <Box paddingY={5}>
+                <Typography variant="h4"> Skill Sets</Typography>
+                <Typography variant="h4"> Skill Sets</Typography>
+                <Typography variant="h4"> Skill Sets</Typography>
+
+                </Box>
+              </Box>
+            </Grid>
           </Grid>
         </Box>
-      </body>
+      </main>
 
       <style jsx>{`
         main {
-          padding: 5rem 0;
           flex: 1;
           display: flex;
           flex-direction: column;
