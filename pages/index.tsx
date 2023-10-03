@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 import { Box, Chip, Divider, Grid, Tab, Tabs, Typography } from "@mui/material";
 import React from "react";
 import FaceIcon from "@mui/icons-material/Face";
+import Link from "next/link";
 
 // import { NextScript, Main } from "next/document";
 // import Layout from "./layout";
@@ -12,6 +13,35 @@ interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
   value: number;
+}
+
+export function TabPanel(props: TabPanelProps) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box
+          sx={{
+            py: 3,
+            height: "calc(100vh - 270px)",
+            overflowY: "scroll",
+            "&::-webkit-scrollbar": {
+              width: 0,
+            },
+          }}
+        >
+          {children}
+        </Box>
+      )}
+    </div>
+  );
 }
 
 export default function Home() {
@@ -70,6 +100,7 @@ export default function Home() {
             scrollbarColor: "auto",
             overflowX: "hidden",
             overflow: "scroll",
+            paddingX: 5,
             // border: "10px solid yellow",
           }}
           component={"div"}
@@ -95,7 +126,13 @@ export default function Home() {
           }}
         >
           <Grid container>
-            <Grid item xs={12}>
+            <Grid
+              item
+              xs={12}
+              sx={{
+                marginY: "100px",
+              }}
+            >
               <Box
                 sx={{
                   width: "100%",
@@ -103,6 +140,8 @@ export default function Home() {
                   display: "flex",
                   justifyContent: "space-between",
                   gap: 3,
+                  padding: 5,
+
                   backgroundColor:
                     "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(15,14,51,1) 28%, rgba(18,18,55,1) 35%, rgba(16,45,83,1) 44%, rgba(10,111,150,1) 100%, rgba(15,54,92,1) 100%, rgba(11,99,138,1) 100%, rgba(12,87,126,1) 100%, rgba(10,111,150,1) 100%, rgba(49,96,130,1) 100%)",
                 }}
@@ -113,7 +152,6 @@ export default function Home() {
                   sx={{
                     padding: 10,
                     gap: 5,
-                    border: "1px solid red",
                   }}
                 >
                   <Typography variant="h4">I'm Samrawit Bezabih</Typography>
@@ -128,7 +166,7 @@ export default function Home() {
                       height: 400,
                     }}
                   /> */}
-                  <Divider></Divider>
+                  <Divider color="white"></Divider>
                 </Box>
                 <Box
                   sx={{
@@ -147,10 +185,7 @@ export default function Home() {
                     and leading projects for our clients at Upstatement. In my
                     free time I've also released an online video course that
                     covers everything you need to know to build a web app with
-                    the Spotify API. When I’m not at the computer, I’m usually
-                    rock climbing, hanging out with my wife and two cats, or
-                    running around Hyrule searching for Korok seeds K o r o k s
-                    e e d s .
+                    the Spotify API. <a href="http://">K o r o k s e e d s .</a>
                   </Typography>
                 </Box>
               </Box>
@@ -179,7 +214,7 @@ export default function Home() {
                     }}
                     textColor="inherit"
                   >
-                    <Tab label="Experience" {...a11yProps(0)} />
+                    <Tab label="Projects" {...a11yProps(0)} />
                     <Tab label="Skills" {...a11yProps(1)} />
                     <Tab label="Education" {...a11yProps(2)} />
                     <Tab label="About" {...a11yProps(3)} />
@@ -187,73 +222,121 @@ export default function Home() {
                 </Box>
               </Box>
             </Grid>
-            <Grid item xs={12}>
-              <Box
+            <TabPanel value={value} index={0}>
+              <Grid
+                item
+                xs={12}
                 sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  padding: "30px",
-                  marginX: "30px",
-                  border: "1px solid red",
+                  height: "100vh",
                 }}
               >
-                <Typography variant="h4"> Skill Sets</Typography>
+                <Typography variant="h4"> Projects Show Case</Typography>
                 <Box
-                  paddingY={5}
                   sx={{
                     display: "flex",
-                    flexWrap: "wrap",
+                    // justifyContent: 'center',
+                    padding: "30px",
+                    marginX: "30px",
+                    width: "100vw",
                     gap: 5,
                   }}
                 >
-                  <Chip icon={<FaceIcon />} label="With Icon" />
-                  <Chip
-                    icon={<FaceIcon />}
-                    label="With Icon"
-                    variant="outlined"
-                  />
-                  <Chip
-                    icon={<FaceIcon />}
-                    label="With Icon"
-                    variant="outlined"
-                  />
+                  <Box paddingY={5} sx={{ display: "flex", flexWrap: "wrap" }}>
+                    <Box sx={{ width: { xs: "100%", sm: "50%" } }}>
+                      <Typography variant="h4">Project 1</Typography>
+                      <Divider></Divider>
+                      <Typography variant="h6" color={"#8397BD"}>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Aliquam aliquid vero tenetur? Non reiciendis, veritatis
+                        praesentium, excepturi at quisquam repellat
+                        exercitationem, possimus temporibus eum similique. Ut
+                        dignissimos voluptatum dolores et.
+                      </Typography>
+                    </Box>
+                    <Box sx={{ width: { xs: "100%", sm: "50%" } }}>
+                      <Box component={"img"} src="" />
+                      <Link href={""}>URL</Link>
+                    </Box>
+                  </Box>
+                  <Box paddingY={5} sx={{ display: "flex", flexWrap: "wrap" }}>
+                    <Box sx={{ width: { xs: "100%", sm: "50%" } }}>
+                      <Typography variant="h4">Project 1</Typography>
+                      <Divider></Divider>
+                      <Typography variant="h6" color={"#8397BD"}>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Aliquam aliquid vero tenetur? Non reiciendis, veritatis
+                        praesentium, excepturi at quisquam repellat
+                        exercitationem, possimus temporibus eum similique. Ut
+                        dignissimos voluptatum dolores et.
+                      </Typography>
+                    </Box>
+                    <Box sx={{ width: { xs: "100%", sm: "50%" } }}>
+                      <Box component={"img"} src="" />
+                      <Link href={""}>URL</Link>
+                    </Box>
+                  </Box>
                 </Box>
-              </Box>
-            </Grid>
-            <Grid item xs={12}>
-              <Box
+              </Grid>
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+              <Grid
+                item
+                xs={12}
                 sx={{
-                  display: "flex",
-                  // justifyContent: 'center',
-                  padding: "30px",
-                  marginX: "30px",
+                  height: "100vh",
                 }}
               >
-                <Typography variant="h4"> Experiences</Typography>
-                <Box paddingY={5}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    padding: "30px",
+                    marginX: "30px",
+                  }}
+                >
                   <Typography variant="h4"> Skill Sets</Typography>
-                  <Typography variant="h4"> Skill Sets</Typography>
-                  <Typography variant="h4"> Skill Sets</Typography>
+                  <Box
+                    paddingY={5}
+                    sx={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: 5,
+                    }}
+                  >
+                    <Chip icon={<FaceIcon />} label="With Icon" />
+                    <Chip
+                      icon={<FaceIcon />}
+                      label="With Icon"
+                      variant="outlined"
+                    />
+                    <Chip
+                      icon={<FaceIcon />}
+                      label="With Icon"
+                      variant="outlined"
+                    />
+                  </Box>
                 </Box>
-              </Box>
-            </Grid>
-            <Grid item xs={12}>
-              <Box
-                sx={{
-                  display: "flex",
-                  // justifyContent: 'center',
-                  padding: "30px",
-                  marginX: "30px",
-                }}
-              >
-                <Typography variant="h4"> Education</Typography>
-                <Box paddingY={5}>
-                  <Typography variant="h4"> Skill Sets</Typography>
-                  <Typography variant="h4"> Skill Sets</Typography>
-                  <Typography variant="h4"> Skill Sets</Typography>
+              </Grid>
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+              <Grid item xs={12}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    // justifyContent: 'center',
+                    padding: "30px",
+                    marginX: "30px",
+                  }}
+                >
+                  <Typography variant="h4"> Education</Typography>
+                  <Box paddingY={5}>
+                    <Typography variant="h4"> Skill Sets</Typography>
+                    <Typography variant="h4"> Skill Sets</Typography>
+                    <Typography variant="h4"> Skill Sets</Typography>
+                  </Box>
                 </Box>
-              </Box>
-            </Grid>
+              </Grid>
+            </TabPanel>
           </Grid>
         </Box>
       </main>
