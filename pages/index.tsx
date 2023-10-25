@@ -77,7 +77,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>TITLE</title>
+        <title>Portfolio</title>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -223,6 +223,7 @@ export default function Home() {
               <Grid
                 item
                 xs={12}
+                gap={5}
                 sx={{
                   height: "100vh",
                 }}
@@ -235,41 +236,104 @@ export default function Home() {
                     padding: "30px",
                     marginX: "30px",
                     width: "100vw",
-                    gap: 5,
+                    gap: 2,
+                    border: '1px solid red'
+
                   }}
                 >
-                  <Box paddingY={5} sx={{ display: "flex", flexWrap: "wrap" }}>
-                    <Box sx={{ width: { xs: "100%", sm: "50%" } }}>
-                      <Typography variant="h4">Project 1</Typography>
+                  <Box paddingY={5} sx={{ display: "flex", width: { xs: "100%", sm: "50%" }, flexWrap: "wrap", border: '1px solid red' }}>
+                    <Box sx={{ }}>
+                      <Typography variant="h4">CNCM </Typography>
                       <Divider></Divider>
                       <Typography variant="h6" color={"#8397BD"}>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Aliquam aliquid vero tenetur? Non reiciendis, veritatis
-                        praesentium, excepturi at quisquam repellat
-                        exercitationem, possimus temporibus eum similique. Ut
-                        dignissimos voluptatum dolores et.
+                        A project on artists asset owners copyrighy and royality collecting plastform.
+                         I worked on authorization,  client payment invoice and and adding News.
                       </Typography>
+                    </Box>
+
+                  </Box>
+                  <Box paddingY={5} sx={{ }}>
+                    <Box sx={{ width: {  } }}>
+                      <Typography variant="h4">Project 1</Typography>
+                      <Divider></Divider>
+ 
                     </Box>
                     <Box sx={{ width: { xs: "100%", sm: "50%" } }}>
                       <Box component={"img"} src="" />
-                      <Link href={""}>URL</Link>
+                      <Link href={"https://cncmethiopia.com/"}>https://cncmethiopia.com/</Link>
                     </Box>
                   </Box>
-                  <Box paddingY={5} sx={{ display: "flex", flexWrap: "wrap" }}>
-                    <Box sx={{ width: { xs: "100%", sm: "50%" } }}>
-                      <Typography variant="h4">Project 1</Typography>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    // justifyContent: 'center',
+                    padding: "30px",
+                    marginX: "30px",
+                    width: "100vw",
+                    gap: 2,
+                    border: '1px solid red'
+
+                  }}
+                >
+                  <Box paddingY={5} sx={{ display: "flex", width: { xs: "100%", sm: "50%" }, flexWrap: "wrap", border: '1px solid red' }}>
+                    <Box sx={{ }}>
+                      <Typography variant="h4">MiniApp Integration </Typography>
                       <Divider></Divider>
                       <Typography variant="h6" color={"#8397BD"}>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Aliquam aliquid vero tenetur? Non reiciendis, veritatis
-                        praesentium, excepturi at quisquam repellat
-                        exercitationem, possimus temporibus eum similique. Ut
-                        dignissimos voluptatum dolores et.
+                          This is Ride Mini app which is developed with Macle and added to Telebirr Super App. 
+                          Which is basically api integration of Telebirr api and Ride app api. 
+                          I made Express Server for the mini app and set up Web Socket for the Ride Orders.
                       </Typography>
+                    </Box>
+
+                  </Box>
+                  <Box paddingY={5} sx={{ }}>
+                    <Box sx={{ width: {  } }}>
+                      <Typography variant="h4">Project 1</Typography>
+                      <Divider></Divider>
+ 
                     </Box>
                     <Box sx={{ width: { xs: "100%", sm: "50%" } }}>
                       <Box component={"img"} src="" />
-                      <Link href={""}>URL</Link>
+                      <Link href={"https://cncmethiopia.com/"}>https://cncmethiopia.com/</Link>
+                    </Box>
+                  </Box>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    // justifyContent: 'center',
+                    padding: "30px",
+                    marginX: "30px",
+                    width: "100vw",
+                    gap: 2,
+                    border: '1px solid red'
+
+                  }}
+                >
+                  <Box paddingY={5} sx={{ display: "flex", width: { xs: "100%", sm: "50%" }, flexWrap: "wrap", border: '1px solid red' }}>
+                    <Box sx={{ }}>
+                      <Typography variant="h4">SGT  </Typography>
+                      <Divider></Divider>
+                      <Typography variant="h6" color={"#8397BD"}>
+                        This is one of my fav projects. I think have performed my full stack skills very well because its was a solo project, 
+                        starting grom setting up the requirements upto developing the full product.
+                      </Typography>
+                    </Box>
+
+                  </Box>
+                  <Box paddingY={5} sx={{ }}>
+                    <Box sx={{ width: {  } }}>
+                      <Typography variant="h4">Project 1</Typography>
+                      <Divider></Divider>
+ 
+                    </Box>
+                    <Box sx={{ width: { xs: "100%", sm: "50%" } }}>
+                      <Box component={"img"} src="" />
+                      <Link href={"https://cncmethiopia.com/"} style={{
+                        color: 'white'
+                      }}>https://cncmethiopia.com/</Link>
                     </Box>
                   </Box>
                 </Box>
@@ -302,17 +366,7 @@ export default function Home() {
                   >
                     <Skills />
 
-                    {/* <Chip icon={<FaceIcon />} label="With Icon" />
-                    <Chip
-                      icon={<FaceIcon />}
-                      label="With Icon"
-                      variant="outlined"
-                    />
-                    <Chip
-                      icon={<FaceIcon />}
-                      label="With Icon"
-                      variant="outlined"
-                    /> */}
+
                   </Box>
                 </Box>
               </Grid>
