@@ -4,10 +4,7 @@ import { Box, Chip, Divider, Grid, Tab, Tabs, Typography } from "@mui/material";
 import React from "react";
 import FaceIcon from "@mui/icons-material/Face";
 import Link from "next/link";
-
-// import { NextScript, Main } from "next/document";
-// import Layout from "./layout";
-// import { Box } from "@mui/material";
+import Skills from "../components/skills";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -303,7 +300,9 @@ export default function Home() {
                       gap: 5,
                     }}
                   >
-                    <Chip icon={<FaceIcon />} label="With Icon" />
+                    <Skills />
+
+                    {/* <Chip icon={<FaceIcon />} label="With Icon" />
                     <Chip
                       icon={<FaceIcon />}
                       label="With Icon"
@@ -313,7 +312,7 @@ export default function Home() {
                       icon={<FaceIcon />}
                       label="With Icon"
                       variant="outlined"
-                    />
+                    /> */}
                   </Box>
                 </Box>
               </Grid>
