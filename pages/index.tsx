@@ -27,11 +27,8 @@ export function TabPanel(props: TabPanelProps) {
         <Box
           sx={{
             py: 3,
-            height: "calc(100vh - 270px)",
-            overflowY: "scroll",
-            "&::-webkit-scrollbar": {
-              width: 0,
-            },
+            // height: "100%",
+            // width: "100%",
           }}
         >
           {children}
@@ -42,26 +39,6 @@ export function TabPanel(props: TabPanelProps) {
 }
 
 export default function Home() {
-  function CustomTabPanel(props: TabPanelProps) {
-    const { children, value, index, ...other } = props;
-
-    return (
-      <div
-        role="tabpanel"
-        hidden={value !== index}
-        id={`simple-tabpanel-${index}`}
-        aria-labelledby={`simple-tab-${index}`}
-        {...other}
-      >
-        {value === index && (
-          <Box sx={{ p: 3 }}>
-            <Typography>{children}</Typography>
-          </Box>
-        )}
-      </div>
-    );
-  }
-
   function a11yProps(index: number) {
     return {
       id: `simple-tab-${index}`,
@@ -69,6 +46,8 @@ export default function Home() {
     };
   }
   const [value, setValue] = React.useState(0);
+  const [borderState, setBorderState] = React.useState("");
+  const [imageState, setImageState] = React.useState("");
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -96,7 +75,9 @@ export default function Home() {
             color: "white",
             scrollbarColor: "auto",
             overflowX: "hidden",
-            overflow: "scroll",
+            "&::-webkit-scrollbar": {
+              width: 0,
+            },
             paddingX: 5,
             // border: "10px solid yellow",
           }}
@@ -112,7 +93,7 @@ export default function Home() {
               xclient <= areaRect.right &&
               yclient >= areaRect.top &&
               yclient <= areaRect.bottom;
-            console.log({ isInArea, xclient, yclient });
+            // console.log({ isInArea, xclient, yclient });
             if (isInArea) {
               space.style.backgroundColor = "#112044";
             }
@@ -122,7 +103,7 @@ export default function Home() {
             space.style.backgroundColor = "initial";
           }}
         >
-          <Grid container>
+          <Grid container sx={{}}>
             <Grid
               item
               xs={12}
@@ -138,7 +119,6 @@ export default function Home() {
                   justifyContent: "space-between",
                   gap: 3,
                   padding: 5,
-
                   backgroundColor:
                     "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(15,14,51,1) 28%, rgba(18,18,55,1) 35%, rgba(16,45,83,1) 44%, rgba(10,111,150,1) 100%, rgba(15,54,92,1) 100%, rgba(11,99,138,1) 100%, rgba(12,87,126,1) 100%, rgba(10,111,150,1) 100%, rgba(49,96,130,1) 100%)",
                 }}
@@ -147,11 +127,23 @@ export default function Home() {
                   width={"40%"}
                   alignContent={"center"}
                   sx={{
-                    padding: 10,
+                    paddingX: 10,
+                    paddingY: 3,
                     gap: 5,
                   }}
                 >
-                  <Typography variant="h4">I'm Samrawit Bezabih</Typography>
+                  <Typography
+                    sx={{
+                      fontSize: {
+                        xs: "15px",
+                        sm: "20px",
+                        md: "30px",
+                        xl: "40px",
+                      },
+                    }}
+                  >
+                    I'm Samrawit Bezabih
+                  </Typography>
 
                   {/* <Box
                     component={"img"}
@@ -167,22 +159,25 @@ export default function Home() {
                 </Box>
                 <Box
                   sx={{
-                    paddingTop: 10,
+                    // paddingTop: 10,
                     width: "50%",
                   }}
                 >
                   {/* <Typography variant="h1">I'm Samrawit Bezabih</Typography> */}
                   <Typography variant="h6" color={"#8397BD"}>
-                    Back in 2012, I decided to try my hand at creating custom
-                    Tumblr themes and tumbled head first into the rabbit hole of
-                    coding and web development. Fast-forward to today, and I’ve
-                    had the privilege of building software for an advertising
-                    agency, a start-up, a student-led design studio, and a huge
-                    corporation. My main focus these days is building products
-                    and leading projects for our clients at Upstatement. In my
-                    free time I've also released an online video course that
-                    covers everything you need to know to build a web app with
-                    the Spotify API. <a href="http://">K o r o k s e e d s .</a>
+                    I've always been keen about coding, but then back in 2018, I
+                    started to volunteer for building apps for my school which
+                    is the university. Taht basically paved my way to learn
+                    programming through building products. After graduating I
+                    worked on application integration i.e. POS (point of sale)
+                    softwares with accounting softwares. And worked on Designing
+                    the databases. But programming was it so currently i work on
+                    both the front end and the back-end of softwares. I'm doing
+                    solo projects and agile methodology is really helping with
+                    that. I'm more focused on satsfying clients by making the
+                    continuously changing features while still keeping tha
+                    software quality.{" "}
+                    <a href="http://">K o r o k s e e d s .</a>
                   </Typography>
                 </Box>
               </Box>
@@ -224,116 +219,403 @@ export default function Home() {
                 item
                 xs={12}
                 gap={5}
-                sx={{
-                  height: "100vh",
-                }}
+                sx={
+                  {
+                    // height: { sm: "100%", md: "50%" },
+                    // width: "100%",
+                    // overflowY: "scroll",
+                    // overflowX: "hidden",
+                    // "&::-webkit-scrollbar": {
+                    //   width: 4,
+                    // },
+                    // "&::-webkit-scrollbar-thumb": {
+                    //   bgcolor: "#575787",
+                    //   borderRadius: 20,
+                    //   border: `3px solid #575787`,
+                    // },
+                  }
+                }
               >
-                <Typography variant="h4"> Projects Show Case</Typography>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    paddingY: { sm: 2, md: 4 },
+                  }}
+                >
+                  {" "}
+                  Projects Show Case
+                </Typography>
                 <Box
                   sx={{
                     display: "flex",
-                    // justifyContent: 'center',
+                    flexWrap: "wrap",
                     padding: "30px",
                     marginX: "30px",
-                    width: "100vw",
-                    gap: 2,
-                    border: '1px solid red'
+                    height: { sm: "100%", md: 700 },
+                    width: { sm: "100%", md: "calc(100vw - 150px)" },
+                    // height: { sm: "100%", md: "50%" },
 
+                    overflowY: "scroll",
+                    overflowX: "hidden",
+                    "&::-webkit-scrollbar": {
+                      width: 4,
+                    },
+                    "&::-webkit-scrollbar-thumb": {
+                      bgcolor: "#575787",
+                      borderRadius: 20,
+                      border: `3px solid #575787`,
+                    },
+                    gap: 2,
                   }}
                 >
-                  <Box paddingY={5} sx={{ display: "flex", width: { xs: "100%", sm: "50%" }, flexWrap: "wrap", border: '1px solid red' }}>
-                    <Box sx={{ }}>
-                      <Typography variant="h4">CNCM </Typography>
-                      <Divider></Divider>
-                      <Typography variant="h6" color={"#8397BD"}>
-                        A project on artists asset owners copyrighy and royality collecting plastform.
-                         I worked on authorization,  client payment invoice and and adding News.
-                      </Typography>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      padding: "30px",
+                      marginX: "30px",
+                      borderRadius: "10px",
+                      border:
+                        borderState === "cncm" ? "1px solid #1A4F98" : "none",
+                    }}
+                    onMouseEnter={() => setBorderState("cncm")}
+                    onMouseLeave={() => setBorderState("")}
+                  >
+                    <Box
+                      paddingY={5}
+                      sx={{
+                        display: "flex",
+                        width: { xs: "100%", sm: "50%" },
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <Box sx={{}}>
+                        <Typography variant="h4">CNCM </Typography>
+                        <Divider></Divider>
+                        <Typography variant="h6" color={"#8397BD"}>
+                          A project on artists asset owners copyrighy and
+                          royality collecting plastform. I worked on
+                          authorization, client payment invoice and and adding
+                          News.
+                        </Typography>
+                      </Box>
                     </Box>
+                    <Box paddingY={5} sx={{}}>
+                      <Box sx={{ width: {} }}>
+                        <Typography variant="h4">Project 1</Typography>
+                        <Divider></Divider>
+                      </Box>
 
-                  </Box>
-                  <Box paddingY={5} sx={{ }}>
-                    <Box sx={{ width: {  } }}>
-                      <Typography variant="h4">Project 1</Typography>
-                      <Divider></Divider>
- 
+                      <Box sx={{ width: "100%" }}>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            gap: 3,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            paddingBottom: 2,
+                          }}
+                        >
+                          <Box
+                            component={"img"}
+                            src="../projectassets/sample1.jpg"
+                            sx={{
+                              width: { sm: "100%" },
+                              height:
+                                imageState === "img4"
+                                  ? {
+                                      sm: "100%",
+                                      md: 400,
+                                    }
+                                  : {
+                                      sm: "100%",
+                                      md: 200,
+                                    },
+                            }}
+                            onMouseEnter={() => setImageState("img4")}
+                            onMouseLeave={() => setImageState("")}
+                          />
+                          <Box
+                            component={"img"}
+                            src="../projectassets/sample1.jpg"
+                            sx={{
+                              width: { sm: "100%" },
+                              height:
+                                imageState === "img5" || imageState === ""
+                                  ? {
+                                      sm: "100%",
+                                      md: 400,
+                                    }
+                                  : {
+                                      sm: "100%",
+                                      md: 200,
+                                    },
+                            }}
+                            onMouseEnter={() => setImageState("img5")}
+                            onMouseLeave={() => setImageState("")}
+                          />
+                          <Box
+                            component={"img"}
+                            src="../projectassets/sample1.jpg"
+                            sx={{
+                              width: { sm: "100%" },
+                              height:
+                                imageState === "img6"
+                                  ? {
+                                      sm: "100%",
+                                      md: 400,
+                                    }
+                                  : {
+                                      sm: "100%",
+                                      md: 200,
+                                    },
+                            }}
+                            onMouseEnter={() => setImageState("img6")}
+                            onMouseLeave={() => setImageState("")}
+                          />
+                        </Box>
+                        <Link href={"https://cncmethiopia.com/"}>
+                          https://cncmethiopia.com/
+                        </Link>
+                      </Box>
                     </Box>
-                    <Box sx={{ width: { xs: "100%", sm: "50%" } }}>
-                      <Box component={"img"} src="" />
-                      <Link href={"https://cncmethiopia.com/"}>https://cncmethiopia.com/</Link>
-                    </Box>
                   </Box>
-                </Box>
-                <Box
-                  sx={{
-                    display: "flex",
-                    // justifyContent: 'center',
-                    padding: "30px",
-                    marginX: "30px",
-                    width: "100vw",
-                    gap: 2,
-                    border: '1px solid red'
+                  <Box
+                    sx={{
+                      display: "flex",
+                      // justifyContent: 'center',
+                      padding: "30px",
+                      marginX: "30px",
+                      // width: "100vw",
+                      gap: 2,
+                      borderRadius: "10px",
 
-                  }}
-                >
-                  <Box paddingY={5} sx={{ display: "flex", width: { xs: "100%", sm: "50%" }, flexWrap: "wrap", border: '1px solid red' }}>
-                    <Box sx={{ }}>
-                      <Typography variant="h4">MiniApp Integration </Typography>
-                      <Divider></Divider>
-                      <Typography variant="h6" color={"#8397BD"}>
-                          This is Ride Mini app which is developed with Macle and added to Telebirr Super App. 
-                          Which is basically api integration of Telebirr api and Ride app api. 
-                          I made Express Server for the mini app and set up Web Socket for the Ride Orders.
-                      </Typography>
+                      border:
+                        borderState === "miniapp"
+                          ? "1px solid #1A4F98"
+                          : "none",
+                    }}
+                    onMouseLeave={() => setBorderState("")}
+                    onMouseEnter={() => setBorderState("miniapp")}
+                  >
+                    <Box
+                      paddingY={5}
+                      sx={{
+                        display: "flex",
+                        width: { xs: "100%", sm: "50%" },
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <Box sx={{}}>
+                        <Typography variant="h4">
+                          MiniApp Integration{" "}
+                        </Typography>
+                        <Divider></Divider>
+                        <Typography variant="h6" color={"#8397BD"}>
+                          This is Ride Mini app which is developed with Macle
+                          and added to Telebirr Super App. Which is basically
+                          api integration of Telebirr api and Ride app api. I
+                          made Express Server for the mini app and set up Web
+                          Socket for the Ride Orders.
+                        </Typography>
+                      </Box>
                     </Box>
-
+                    <Box paddingY={5}>
+                      <Box sx={{ width: {} }}>
+                        <Typography variant="h4" sx={{ paddingBottom: 2 }}>
+                          Project 1
+                        </Typography>
+                        <Divider></Divider>
+                      </Box>
+                      <Box
+                        sx={{
+                          width: "100%",
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            display: "flex",
+                            gap: 3,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            paddingBottom: 2,
+                          }}
+                        >
+                          <Box
+                            component={"img"}
+                            src="../projectassets/sample1.jpg"
+                            sx={{
+                              width: { sm: "100%" },
+                              height:
+                                imageState === "img1"
+                                  ? {
+                                      sm: "100%",
+                                      md: 400,
+                                    }
+                                  : {
+                                      sm: "100%",
+                                      md: 200,
+                                    },
+                            }}
+                            onMouseEnter={() => setImageState("img1")}
+                            onMouseLeave={() => setImageState("")}
+                          />
+                          <Box
+                            component={"img"}
+                            src="../projectassets/sample1.jpg"
+                            sx={{
+                              width: { sm: "100%" },
+                              height:
+                                imageState === "img2" || imageState === ""
+                                  ? {
+                                      sm: "100%",
+                                      md: 400,
+                                    }
+                                  : {
+                                      sm: "100%",
+                                      md: 200,
+                                    },
+                            }}
+                            onMouseEnter={() => setImageState("img2")}
+                            onMouseLeave={() => setImageState("")}
+                          />
+                          <Box
+                            component={"img"}
+                            src="../projectassets/sample1.jpg"
+                            sx={{
+                              width: { sm: "100%" },
+                              height:
+                                imageState === "img3"
+                                  ? {
+                                      sm: "100%",
+                                      md: 400,
+                                    }
+                                  : {
+                                      sm: "100%",
+                                      md: 200,
+                                    },
+                            }}
+                            onMouseEnter={() => setImageState("img3")}
+                            onMouseLeave={() => setImageState("")}
+                          />
+                        </Box>
+                        <Link href={"https://cncmethiopia.com/"}>
+                          https://cncmethiopia.com/
+                        </Link>
+                      </Box>
+                    </Box>
                   </Box>
-                  <Box paddingY={5} sx={{ }}>
-                    <Box sx={{ width: {  } }}>
-                      <Typography variant="h4">Project 1</Typography>
-                      <Divider></Divider>
- 
+                  <Box
+                    sx={{
+                      display: "flex",
+                      // justifyContent: 'center',
+                      padding: "30px",
+                      marginX: "30px",
+                      // width: "100vw",
+                      borderRadius: "10px",
+                      gap: 2,
+                      border:
+                        borderState === "sgt" ? "1px solid #1A4F98" : "none",
+                    }}
+                    onMouseLeave={() => setBorderState("")}
+                    onMouseEnter={() => setBorderState("sgt")}
+                  >
+                    <Box
+                      paddingY={5}
+                      sx={{
+                        display: "flex",
+                        width: { xs: "100%", sm: "50%" },
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <Box sx={{}}>
+                        <Typography variant="h4">SGT </Typography>
+                        <Divider></Divider>
+                        <Typography variant="h6" color={"#8397BD"}>
+                          This is one of my fav projects. I think have performed
+                          my full stack skills very well because its was a solo
+                          project, starting grom setting up the requirements
+                          upto developing the full product.
+                        </Typography>
+                      </Box>
                     </Box>
-                    <Box sx={{ width: { xs: "100%", sm: "50%" } }}>
-                      <Box component={"img"} src="" />
-                      <Link href={"https://cncmethiopia.com/"}>https://cncmethiopia.com/</Link>
-                    </Box>
-                  </Box>
-                </Box>
-                <Box
-                  sx={{
-                    display: "flex",
-                    // justifyContent: 'center',
-                    padding: "30px",
-                    marginX: "30px",
-                    width: "100vw",
-                    gap: 2,
-                    border: '1px solid red'
-
-                  }}
-                >
-                  <Box paddingY={5} sx={{ display: "flex", width: { xs: "100%", sm: "50%" }, flexWrap: "wrap", border: '1px solid red' }}>
-                    <Box sx={{ }}>
-                      <Typography variant="h4">SGT  </Typography>
-                      <Divider></Divider>
-                      <Typography variant="h6" color={"#8397BD"}>
-                        This is one of my fav projects. I think have performed my full stack skills very well because its was a solo project, 
-                        starting grom setting up the requirements upto developing the full product.
-                      </Typography>
-                    </Box>
-
-                  </Box>
-                  <Box paddingY={5} sx={{ }}>
-                    <Box sx={{ width: {  } }}>
-                      <Typography variant="h4">Project 1</Typography>
-                      <Divider></Divider>
- 
-                    </Box>
-                    <Box sx={{ width: { xs: "100%", sm: "50%" } }}>
-                      <Box component={"img"} src="" />
-                      <Link href={"https://cncmethiopia.com/"} style={{
-                        color: 'white'
-                      }}>https://cncmethiopia.com/</Link>
+                    <Box paddingY={5} sx={{}}>
+                      <Box sx={{ width: {} }}>
+                        <Typography variant="h4">Project 1</Typography>
+                        <Divider></Divider>
+                      </Box>
+                      <Box sx={{ width: "100%" }}>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            gap: 3,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            paddingBottom: 2,
+                          }}
+                        >
+                          <Box
+                            component={"img"}
+                            src="../projectassets/sample1.jpg"
+                            sx={{
+                              width: { sm: "100%" },
+                              height:
+                                imageState === "img9"
+                                  ? {
+                                      sm: "100%",
+                                      md: 400,
+                                    }
+                                  : {
+                                      sm: "100%",
+                                      md: 200,
+                                    },
+                            }}
+                            onMouseEnter={() => setImageState("img9")}
+                            onMouseLeave={() => setImageState("")}
+                          />
+                          <Box
+                            component={"img"}
+                            src="../projectassets/sample1.jpg"
+                            sx={{
+                              width: { sm: "100%" },
+                              height:
+                                imageState === "img8" || imageState === ""
+                                  ? {
+                                      sm: "100%",
+                                      md: 400,
+                                    }
+                                  : {
+                                      sm: "100%",
+                                      md: 200,
+                                    },
+                            }}
+                            onMouseEnter={() => setImageState("img8")}
+                            onMouseLeave={() => setImageState("")}
+                          />
+                          <Box
+                            component={"img"}
+                            src="../projectassets/sample1.jpg"
+                            sx={{
+                              width: { sm: "100%" },
+                              height:
+                                imageState === "img7"
+                                  ? {
+                                      sm: "100%",
+                                      md: 400,
+                                    }
+                                  : {
+                                      sm: "100%",
+                                      md: 200,
+                                    },
+                            }}
+                            onMouseEnter={() => setImageState("img7")}
+                            onMouseLeave={() => setImageState("")}
+                          />
+                        </Box>
+                        <Link href={"https://cncmethiopia.com/"}>
+                          https://cncmethiopia.com/
+                        </Link>
+                      </Box>
                     </Box>
                   </Box>
                 </Box>
@@ -343,9 +625,11 @@ export default function Home() {
               <Grid
                 item
                 xs={12}
-                sx={{
-                  height: "100vh",
-                }}
+                sx={
+                  {
+                    // height: "100vh",
+                  }
+                }
               >
                 <Box
                   sx={{
@@ -365,8 +649,6 @@ export default function Home() {
                     }}
                   >
                     <Skills />
-
-
                   </Box>
                 </Box>
               </Grid>
