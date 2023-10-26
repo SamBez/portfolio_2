@@ -63,8 +63,10 @@ export default function Skills() {
   return (
     <Box
       sx={{
-        width: "100%",
-        height: "100%",
+        width: "80%",
+        height: "80%",
+        paddingX: 5,
+        border: "1px solid #1A4F98",
       }}
     >
       <Box
