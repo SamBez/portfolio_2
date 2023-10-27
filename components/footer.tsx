@@ -8,8 +8,7 @@ export default function Footer() {
         width: "100%",
         height: "90px",
         backgroundColor: "#3a5477",
-        paddingY: "1rem",
-        marginTop: "1rem",
+        paddingY: "10px",
         position: "fixed",
         opacity: 0.5,
       }}

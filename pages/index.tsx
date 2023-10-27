@@ -77,11 +77,11 @@ export default function Home() {
         />
       </Head>
 
-      <main id="main-body">
+      <main>
         <Box
           sx={{
             width: "100vw",
-            height: "calc(100vh -150px)",
+            height: "100vh",
             bgcolor: "#0A192F",
             color: "white",
             scrollbarColor: "auto",
@@ -90,20 +90,19 @@ export default function Home() {
               width: 0,
             },
             paddingX: 5,
-            border: "10px solid yellow",
           }}
           component={"div"}
           onMouseMove={(event) => {
             const xclient = event.clientX;
             const yclient = event.clientY;
 
-            const space = document.getElementById("main-body");
-            const areaRect = space.getBoundingClientRect();
-            const isInArea =
-              xclient >= areaRect.left &&
-              xclient <= areaRect.right &&
-              yclient >= areaRect.top &&
-              yclient <= areaRect.bottom;
+            // const space = document.getElementById("main-body");
+            // const areaRect = space.getBoundingClientRect();
+            // const isInArea =
+            //   xclient >= areaRect.left &&
+            //   xclient <= areaRect.right &&
+            //   yclient >= areaRect.top &&
+            //   yclient <= areaRect.bottom;
             // console.log({ isInArea, xclient, yclient });
             // if (isInArea) {
             //   space.style.backgroundColor = "#112044";
@@ -114,7 +113,12 @@ export default function Home() {
           //   space.style.backgroundColor = "initial";
           // }}
         >
-          <Grid container sx={{}}>
+          <Grid
+            container
+            sx={{
+              paddingBottom: "90px",
+            }}
+          >
             <Grid
               item
               xs={12}
@@ -130,7 +134,6 @@ export default function Home() {
                   justifyContent: "space-between",
                   gap: 3,
                   padding: 5,
-                  border: "1px solid red",
 
                   backgroundColor:
                     "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(15,14,51,1) 28%, rgba(18,18,55,1) 35%, rgba(16,45,83,1) 44%, rgba(10,111,150,1) 100%, rgba(15,54,92,1) 100%, rgba(11,99,138,1) 100%, rgba(12,87,126,1) 100%, rgba(10,111,150,1) 100%, rgba(49,96,130,1) 100%)",
@@ -514,7 +517,7 @@ export default function Home() {
                       </Box>
                     </Box>
                   </Box>
-                  <Box
+                  {/* <Box
                     sx={{
                       display: "flex",
                       // justifyContent: 'center',
@@ -626,7 +629,7 @@ export default function Home() {
                         </Link>
                       </Box>
                     </Box>
-                  </Box>
+                  </Box> */}
                 </Box>
               </Grid>
             </TabPanel>
@@ -789,11 +792,11 @@ export default function Home() {
 
       <style jsx>{`
         main {
-          flex: 1;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          bgcolor: "#0A192F";
         }
         footer {
           width: 100%;
