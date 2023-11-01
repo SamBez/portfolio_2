@@ -63,6 +63,15 @@ export default function Home() {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+  // const root = document.getElementsByTagName("main") as any;
+
+  // document.addEventListener("mousemove", (evt) => {
+  //   let x = evt.clientX / innerWidth;
+  //   let y = evt.clientY / innerHeight;
+
+  //   root.style.setProperty("--mouse-x", x);
+  //   root.style.setProperty("--mouse-y", y);
+  // });
 
   return (
     <div className={styles.container}>
@@ -79,10 +88,13 @@ export default function Home() {
 
       <main>
         <Box
+          id="main-body"
           sx={{
             width: "100vw",
             height: "100vh",
-            bgcolor: "#0A192F",
+            // bgcolor: "#0A192F",
+            backgroundImage:
+              "radial-gradient( at calc(var(--mouse-x) * 100%) calc(var(--mouse-y) * 100%), rgba(0, 0, 0, 0.855) 0.1%, #0A192F)",
             color: "white",
             scrollbarColor: "auto",
             overflowX: "hidden",
@@ -96,7 +108,11 @@ export default function Home() {
             const xclient = event.clientX;
             const yclient = event.clientY;
 
-            // const space = document.getElementById("main-body");
+            const space = document.getElementById("main-body");
+            let x = event.clientX / innerWidth;
+            let y = event.clientY / innerHeight;
+            space.style.setProperty("--mouse-x", x);
+            space.style.setProperty("--mouse-y", y);
             // const areaRect = space.getBoundingClientRect();
             // const isInArea =
             //   xclient >= areaRect.left &&
@@ -797,6 +813,11 @@ export default function Home() {
           justify-content: center;
           align-items: center;
           bgcolor: "#0A192F";
+          background-image: radial-gradient(
+            at calc(var(--mouse-x) * 100%) calc(var(--mouse-y) * 100%),
+            transparent,
+            black
+          );
         }
         footer {
           width: 100%;
