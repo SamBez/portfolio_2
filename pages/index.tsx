@@ -109,8 +109,8 @@ export default function Home() {
             const yclient = event.clientY;
 
             const space = document.getElementById("main-body");
-            let x = event.clientX / innerWidth;
-            let y = event.clientY / innerHeight;
+            let x = (event.clientX / innerWidth) as any;
+            let y = (event.clientY / innerHeight) as any;
             space.style.setProperty("--mouse-x", x);
             space.style.setProperty("--mouse-y", y);
             // const areaRect = space.getBoundingClientRect();
